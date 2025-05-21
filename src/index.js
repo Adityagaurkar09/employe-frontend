@@ -1,10 +1,10 @@
 import React from 'react';
 import ReactDOM from 'react-dom/client';
 import './index.css';
-import Home from './view/Home';
-import Add from './view/Add';
-import Details from './view/Details';
-import Update from './view/Update';
+import Home from './view/Home/Home';
+import Add from './view/Add/Add';
+import Details from './view/detail/Details';
+import Update from './view/Update/Update';
 import { createBrowserRouter, RouterProvider } from 'react-router-dom';
 
 
