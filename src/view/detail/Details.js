@@ -11,7 +11,7 @@ function Details() {
   const {id} = useParams();
   
   const loadEmployeeDetail = async(id)=>{
-    const response = await axios.get(`http://localhost:5002/employee/${id}`)
+    const response = await axios.get(`http://localhost:5002/employees/${id}`)
     setEmployee(response.data.data)
 
   }
@@ -20,9 +20,9 @@ function Details() {
   },[id])
   return (
     <div>
-        <h1>Employee Detail</h1>
-       <div>
-        <h2>name = {employee?.Name}</h2>
+        <h1 className='employee-head'>Employee Detail</h1>
+       <div className='employee-detail'>
+        <h2>name = {employee?.name}</h2>
         <h2>id = {employee?.id}</h2>
         <h2>salary = {employee?.salary}</h2>
        </div>

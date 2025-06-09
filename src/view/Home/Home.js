@@ -6,34 +6,55 @@ import icondataadd from '../../asset/dataadd.png'
 import { Link } from 'react-router-dom';
 
 function Home() {
-  const [employee , setEmployee] =useState([]);
+//   const [employee , setEmployee] =useState([]);
 
-  const loadEmployee = async ()=>{
-    const response = await axios.get("http://localhost:5002/employees")  
+//   const loadEmployee = async ()=>{
+//     const response = await axios.get("http://localhost:5002/employees")  
     
-  setEmployee(response.data.data);
+//   setEmployee(response.data.data);
     
-  }
-useEffect (()=>{
-  loadEmployee();
-},[])
+//   }
+// useEffect (()=>{
+//   loadEmployee();
+// },[])
 //[] empty dependency jb jb page load honga  tb tb  loadStudent function  call honga 
+
+const [employees, setEmployee] = useState([]);
+
+    const loadEmployee = async () => {
+      const response =  await axios.get("http://localhost:5002/employees")
+      setEmployee(response.data.data);
+      }
+    useEffect(() => {
+      loadEmployee();
+    }, []);
 
   return (
     <div> 
-      <h1>employee App</h1>
+      <h1 className='employee'>Employee App</h1>
+
+      {/* {
+        employees.map((employee,index)=>{
+          return(
+            <div>
+              <h1>{employee.id}{employee.name}</h1>
+              <p>{employee.salary}</p>
+            </div>
+          )
+        })
+      } */}
+      
 
       {
-        employee.map((employee , index)=>{
-          const {id,Name, salary} = employee;
+        employees.map((employee , index)=>{
+          const {id,name, salary} = employee;
           return (
-            <EmployeeCard  key={index} id={id} Name={Name} salary={salary}/>
+            <EmployeeCard  key={index} id={id} name={name} salary={salary}/>
           )
         })
       }
-      {
-        employee.length === 0 && <h3>employee not found</h3>    
-      }
+      
+       { employees.length === 0 && <h3>employee not found</h3> }
         
         <Link to='/Add'>
        <img src={icondataadd} className='icon'></img>
@@ -41,6 +62,8 @@ useEffect (()=>{
       </div>
   
   )
+
+  
 }
 
 export default Home

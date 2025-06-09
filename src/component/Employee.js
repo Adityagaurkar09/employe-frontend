@@ -4,24 +4,27 @@ import { useNavigate } from 'react-router-dom'
 import axios from 'axios';
 
 
-function EmployeeCard({ id,name}) {
+function EmployeeCard({ id,name,salary}) {
   const navigate = useNavigate();
 
   const deletStudent = async(id)=>{
     const response = await axios.delete(`http://localhost:5002/employees/${id}`)
      window.location.reload();
+     
   }
+ 
   return (
  
     <div className='card'
      onClick={(e) => {
           
-          navigate(`/Detail/${id}`);
+          navigate(`/Details/${id}`);
           
          }}>
         <h3 className='name'>{name}</h3>
         <div className='detail'>
-            <span> no: {id}</span>
+            <span> Id: {id}</span>
+            <span style={{marginLeft : "20px"}}>salary:{salary}</span>
             
         </div>
 

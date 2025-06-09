@@ -9,21 +9,26 @@ import toast, { Toaster } from 'react-hot-toast'
 function Add() {
  
   const [id , setId] = useState('');
-  const [Name , setName] = useState('');
+  const [name , setName] = useState('');
   const [salary , setSalary] = useState('');
+  const [age , setAge] = useState('');
+  
 
   const addStudent = async()=>{
     try
     {
     const response = await axios.post("http://localhost:5002/employees",{
       id : id,
-      Name: Name
+      name: name,
+      age: age,
+      salary: salary
       
     })
 
     setId("");
     setName("");
     setSalary("");
+    setAge("");
 
     toast.success(response?.data?.message);
   }catch (error){
@@ -33,8 +38,8 @@ function Add() {
   };
  
   return (
-    <div className='student-form'>
-        <h1>Add Student</h1>
+    <div className='.employee-form'>
+        <h1 className='employee'>Add Student</h1>
 
         <input type='text' 
         placeholder='id' 
@@ -46,12 +51,18 @@ function Add() {
         <input type='text' 
         placeholder='Name'
         className='user-input'
-        value={Name} 
+        value={name} 
         onChange={(e)=>setName(e.target.value)}/>
+
+        <input type='text' 
+        placeholder='age' 
+        className='user-input'
+        value={age}
+        onChange={(e)=>setAge(e.target.value)}/>
         
 
         <input type='text' 
-        placeholder='city'
+        placeholder='salary'
         className='user-input'
         value={salary} 
         onChange={(e)=>setSalary(e.target.value)}/>
