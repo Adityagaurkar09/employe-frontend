@@ -24,8 +24,8 @@ const router = createBrowserRouter([
     element: <Details/>,
   },
   {
-    path: '/update/:id',
-    element: <Update />,
-  }
+  path: '/update/:id',
+  element: <Update />,
+}
 ])
 root.render(<RouterProvider router={router}/>);

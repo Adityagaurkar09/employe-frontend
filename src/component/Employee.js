@@ -44,7 +44,7 @@ function EmployeeCard({ id,name,salary}) {
          className=' edit-btn'
          onClick={(e) => {
           e.stopPropagation();
-          navigate(`/edit/${id}`)
+          navigate(`/update/${id}`)
           
          }}
         >Edit</button>
